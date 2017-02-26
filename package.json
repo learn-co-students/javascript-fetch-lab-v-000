@@ -37,6 +37,6 @@
     "node-inspector": "^0.12.8"
   },
   "dependencies": {
-    "handlebars": "^4.0.5"
+    "handlebars": "^4.0.6"
   }
 }
