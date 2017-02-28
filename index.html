@@ -37,14 +37,23 @@
         <div id="issues"></div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
     <script id="repo-template" type="text/x-handlebars-template">
       <h3>Forked Successfully!</h3>
+        <p>{{full_name}}</p>  - <a href="{{html_url}}">link</a>  
+  
       <!--fill me in with templatey goodness-->
     </script>
     <script id="issues-template" type="text/x-handlebars-template">
       <!--fill me in with templatey goodness-->
+      <ul>
+        {{#each this}}
+        <li>{{title}} - {{body}} - <a href="{{url}}"></a>link</li>
+        {{/each}}
+      </ul>
     </script>
+
   </body>
 </html>
