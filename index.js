@@ -1,18 +1,42 @@
+const base = 'https://api.github.com/'
+
 function getIssues() {
+  fetch(`${base}repos/mcclains2003/javascript-fetch-lab/issues`).then(resp => resp.json()).then(json => showResults(json))
 }
 
 function showIssues(json) {
+  const template = Handlebars.compile(document.getElementById("issues-template").innerHTML)
+  document.getElementById("issues").innerHTML = template(json)
 }
 
 function createIssue() {
+  const title = document.getElementById("title").value
+  const body = document.getElementById("body").value
+  const postData = { title: title, body: body }
+
+  fetch(`${base}repos/mcclains2003/javascript-fetch-lab/issues`, {
+    method: 'post',
+    body: JSON.stringify(postData),
+    headers: {
+      Authorization: `token ${getToken()}`
+    }
+  }).then(issues => getIssues())
 }
 
 function showResults(json) {
+  const template = Handlebars.compile(document.getElementById("repo-template").innerHTML)
+  document.getElementById("results").innerHTML = template(json)
 }
 
 function forkRepo() {
-  const repo = 'learn-co-curriculum/javascript-fetch-lab'
+  const repo = 'https://api.github.com/repos/learn-co-curriculum/javascript-fetch-lab/forks'
   //use fetch to fork it!
+  fetch(repo, {
+    method: 'post',
+    headers: {
+      Authorization: `token ${getToken()}`
+    }
+  }).then(response => response.json()).then(json => showResults(json))
 }
 
 function getToken() {
