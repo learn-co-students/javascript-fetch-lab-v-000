@@ -1,3 +1,6 @@
+const token = getToken();
+const newRepo = '';
+
 function getIssues() {
 }
 
@@ -5,18 +8,26 @@ function showIssues(json) {
 }
 
 function createIssue() {
+  const issueTitle = document.getElementById('title').value;
+  const issueBody = document.getElementById('body').value;
+  fetch(`https://api.github.com/repos/${newRepo}/issues`, {
+    method: 'post',
+    headers: {
+      Authorization: `token ${token}`
+    }
+  })
 }
 
 function showResults(json) {
-  var repoDiv = document.getElementById('repo-template').innerHTML;
-  var template = Handlebars.compile(repoDiv);
-  document.getElementById('results').innerHTML += template(json);
+  newRepo = json.full_name;
+  const repoDiv = document.getElementById('repo-template').innerHTML;
+  const template = Handlebars.compile(repoDiv);
+  document.getElementById('results').innerHTML = template(json);
 }
 
 function forkRepo() {
-  const token = getToken();
-  const repo = 'learn-co-curriculum/javascript-fetch-lab'
-  fetch(`https://api.github.com/repos/${repo}/forks`, {
+  const repo = 'learn-co-curriculum/javascript-fetch-lab';
+    fetch(`https://api.github.com/repos/${repo}/forks`, {
     method: 'post',
     headers: {
       Authorization: `token ${token}`
@@ -27,5 +38,5 @@ function forkRepo() {
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return '3653deff3d08d342017abe94948d9fd39d11a4f0'
+  return ''
 }
