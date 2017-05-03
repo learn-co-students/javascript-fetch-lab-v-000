@@ -1,6 +1,7 @@
 const token = getToken();
 const newRepo = 'bhabig/javascript-fetch-lab';
 
+// getIssues is necessary to collect ALL of the repo's issues, otherwise create would call show to display the single, newly created issue.
 function getIssues() {
   fetch(`https://api.github.com/repos/${newRepo}/issues`)
     .then(res => res.json())
@@ -23,7 +24,7 @@ function createIssue() {
     headers: {
       Authorization: `token ${token}`
     }
-  }).then(res => getIssues())
+  }).then(res => res.json()).then(json => showIssues(json))
 }
 
 function showResults(json) {
