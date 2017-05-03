@@ -2,13 +2,15 @@ const token = getToken();
 const newRepo = 'bhabig/javascript-fetch-lab';
 
 function getIssues() {
-  debugger;
+  fetch(`https://api.github.com/repos/${newRepo}/issues`)
+    .then(res => res.json())
+    .then(json => showIssues(json))
 }
 
 function showIssues(json) {
   const issuesDiv = document.getElementById('issues-template').innerHTML;
   const template = Handlebars.compile(issuesDiv);
-  document.getElementById('issues').innerHTML += template(json);
+  document.getElementById('issues').innerHTML = template(json);
 }
 
 function createIssue() {
@@ -21,7 +23,7 @@ function createIssue() {
     headers: {
       Authorization: `token ${token}`
     }
-  }).then(res => res.json()).then(json => showIssues(json))
+  }).then(res => getIssues())
 }
 
 function showResults(json) {
@@ -43,5 +45,5 @@ function forkRepo() {
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return '351b5ea85aa8f563282605121783a45372c20dda'
+  return ''
 }

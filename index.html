@@ -45,12 +45,12 @@
     </script>
     <script id="issues-template" type="text/x-handlebars-template">
       <ul>
-        {{#each this}}
-          <li>
-            <h1><a href="{{url}}">{{title}}</a></h1>
-            <h4>{{body}}</h4>
-          </li>
-        {{/each}}
+      {{#each this}}
+        <li>
+          <h4><a href="{{ url }}">{{ title }}</a></h4>
+          <p>{{ body }}</p>
+        </li>
+      {{/each}}
       </ul>
     </script>
   </body>
