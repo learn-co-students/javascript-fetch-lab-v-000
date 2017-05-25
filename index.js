@@ -1,18 +1,51 @@
+function buildRepoURL(owner, resource) {
+  const baseURL = "https://api.github.com"
+  const labSlug = "javascript-fetch-lab"
+  return `${baseURL}/repos/${owner}/${labSlug}/${resource}`
+}
+
 function getIssues() {
+  fetch(buildRepoURL("mekowalski", "issues"))
+    .then(data => data.json())
+    .then(showIssues)
 }
 
 function showIssues(json) {
+  const template = document.getElementById('issues-template').innerHTML;
+  const builder = Handlebars.compile(template)
+  const issuesDiv = document.getElementById('issues')
+  issuesDiv.innerHTML = builder(json)
 }
 
 function createIssue() {
+  fetch(buildRepoURL("mekowalski", "issues"), {
+    method: "post",
+    headers: {
+      Authorization: `token ${getToken()}`
+    },
+    body: {
+      title: document.getElementById('title').value,
+      body: document.getElementById('body').value
+    }
+  }).then(data => getIssues())
 }
 
 function showResults(json) {
+  const template = document.getElementById('repo-template').innerHTML
+  const builder = Handlebars.compile(template);
+  const resultsDiv = document.getElementById('results');
+  resultsDiv.innerHTML = builder(json)
 }
 
 function forkRepo() {
-  const repo = 'learn-co-curriculum/javascript-fetch-lab'
-  //use fetch to fork it!
+  fetch(buildRepoURL("learn-co-curriculum", "forks"), {
+    method: "post",
+    headers: {
+      Authorization: `token ${getToken()}`
+    }
+  }).then((data) => {
+    return data.json()
+  }).then(showResults)
 }
 
 function getToken() {
