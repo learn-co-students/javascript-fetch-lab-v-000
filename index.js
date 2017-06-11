@@ -8,16 +8,23 @@ function createIssue() {
 }
 
 function showResults(json) {
+  console.log(json);
 }
 
 function forkRepo() {
-  const repo = 'learn-co-curriculum/javascript-fetch-lab';
-  const owner = 'jcpny1';
+  const owner = 'learn-co-curriculum';
+  const repo  = 'javascript-fetch-lab';
   //use fetch to fork it!
   fetch(`https://api.github.com/repos/${owner}/${repo}/forks`, {
     method: 'POST',
-    headers: { Authorization: `token ${token}` }
+    headers: { Authorization: `token ${getToken()}` }
   }).then(res => res.json()).then(json => showResults(json));
+  // const token = getToken();
+  // fetch('https://api.github.com/user/repos', {
+  //   headers: {
+  //     Authorization: `token ${token}`
+  //   }
+  // }).then(res => res.json()).then(json => console.log(json));
 }
 
 function getToken() {
