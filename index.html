@@ -39,15 +39,18 @@
       </div>
     </div>
     <script src="handlebars.js"></script>
-    <script src="index.js"></script>
     <script src="jquery-3.2.1.js"></script>
+    <script src="index.js"></script>
+    <script id="issues-template" type="text/x-handlebars-template">
+      <ul>
+       {{#each this}}
+         <li><a href="{{html_url}}" target="_blank">{{title}}</a> - {{body}}</li>
+        {{/each}}
+      </ul>
+    </script>
     <script id="repo-template" type="text/x-handlebars-template">
       <h3>Forked Successfully!</h3>
       <h3><a href="{{html_url}}" target="_blank">{{full_name}}</a></h3>
-    </script>
-    </script>
-    <script id="issues-template" type="text/x-handlebars-template">
-      <!--fill me in with templatey goodness-->
     </script>
   </body>
 </html>

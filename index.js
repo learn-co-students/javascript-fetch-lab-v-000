@@ -3,9 +3,21 @@ const repo   = 'javascript-fetch-lab';
 const source = 'learn-co-curriculum';
 
 function getIssues() {
+  fetch(`https://api.github.com/repos/${owner}/${repo}/issues`, {
+    method: 'GET',
+    headers: { Authorization: `token ${getToken()}` }
+  }).then(function(response) {
+    if(response.ok) { return Promise.resolve(response) }
+    return response.json().then(json => {
+      const error = new Error(json.message || response.statusText);
+      displayError(error.message);
+    })
+  }).then(res => res.json()).then(json => showIssues(json))
 }
 
 function showIssues(json) {
+  const template = Handlebars.compile($('#issues-template').html());
+  $('#issues').html(template(json));
 }
 
 function createIssue() {
@@ -19,11 +31,10 @@ function createIssue() {
       const error = new Error(json.message || response.statusText);
       displayError(error.message);
     })
-  })
+  }).then( getIssues());
 }
 
 function showResults(json) {
-  console.log(json);
   const template = Handlebars.compile($('#repo-template').html());
   $('#results').html(template(json));
 }
@@ -34,12 +45,12 @@ function forkRepo() {
     method: 'POST',
     headers: { Authorization: `token ${getToken()}` }
   }).then(function(response) {
-    if(response.ok) { return response }
-    throw new Error('Network response was not ok.')
-  }).then(res => res.json()).then(json => showResults(json)
-   ).catch(function(error) {
-     displayError(error.message)
-   });
+    if(response.ok) { return Promise.resolve(response) }
+    return response.json().then(json => {
+      const error = new Error(json.message || response.statusText);
+      displayError(error.message);
+    })
+  }).then(res => res.json()).then(json => showResults(json))
 }
 
 function displayError(msg) {
