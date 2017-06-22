@@ -1,10 +1,9 @@
 const results = document.getElementById('results')
 const issues = document.getElementById('issues')
 const githubUrl = "https://api.github.com/"
-var forkedRepo = "try this"
+var forkedRepo = 'mxdavis/javascript-fetch-lab'
 
 function getIssues(json) {
-  var forkedRepo = results.getElementsByTagName("a")[0].innerHTML
   fetch(`${githubUrl}repos/${forkedRepo}/issues`, {
     method: 'get',
     headers: {
@@ -22,7 +21,7 @@ function showIssues(json) {
 function createIssue() {
   var title = document.getElementById('title').value
   var issue = document.getElementById('body').value
-  var forkedRepo = results.getElementsByTagName("a")[0].innerHTML
+  // var forkedRepo = results.getElementsByTagName("a")[0].innerHTML
   var issueData = { title: title, body: issue }
   fetch(`${githubUrl}repos/${forkedRepo}/issues`, {
     method: 'post',
