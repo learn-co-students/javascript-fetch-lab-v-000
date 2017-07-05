@@ -41,9 +41,13 @@
     <script src="index.js"></script>
     <script id="repo-template" type="text/x-handlebars-template">
       <h3>Forked Successfully!</h3>
+      <a href="{{html_url}}">{{full_name}}</a>
       <!--fill me in with templatey goodness-->
     </script>
     <script id="issues-template" type="text/x-handlebars-template">
+      {{#each this}}
+        <a href="{{url}}">{{title}} - {{body}}</a>
+      {{/each}}
       <!--fill me in with templatey goodness-->
     </script>
   </body>
