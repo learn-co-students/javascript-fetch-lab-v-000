@@ -1,18 +1,43 @@
 function getIssues() {
+  const repo = 'https://api.github.com/repos/himachitalia/javascript-fetch-lab/issues'
+  fetch(repo, {
+    method: 'get',
+    headers: { Authorization: `token ${getToken()}` }
+  })
+  .then(res => showIssues(results))//use fetch to fork it!
 }
 
 function showIssues(json) {
+  const template = Handlebars.compile(document.getElementById('issues-template').innerHTML)
 }
 
 function createIssue() {
+  document.getElementById('issues').innerHTML = template(json)
+  const repo = 'https://api.github.com/repos/himachitalia/javascript-fetch-lab/issues'
+  const postData = {
+    title: document.getElementById('title').value,
+    body: document.getElementById('body').value
+  };
+  fetch(repo, {
+    method: 'post',
+    body: JSON.stringify(postData),
+    headers: { Authorization: `token ${getToken()}` }
+  })
+  .then(res => getIssues())
 }
 
 function showResults(json) {
+  const template = Handlebars.compile(document.getElementById('repo-template').innerHTML)
+  document.getElementById('results').innerHTML = template(json)
 }
 
 function forkRepo() {
-  const repo = 'learn-co-curriculum/javascript-fetch-lab'
-  //use fetch to fork it!
+  const repo = 'https://api.github.com/repos/learn-co-curriculum/javascript-fetch-lab/forks'
+  fetch(repo, {
+    method: 'post',
+    headers: { Authorization: `token ${getToken()}` }
+  })
+  .then(res => showResults(results))//use fetch to fork it!
 }
 
 function getToken() {
