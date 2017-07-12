@@ -26,40 +26,6 @@ describe('index', () => {
     expect(getToken()).toEqual('')
   })
 
-  describe('templates', () => {
-    describe('showing issues', () => {
-      it('has the right vals in template', () => {
-        const temp = document.getElementById('issues-template').innerHTML
-        expect(temp).toMatch(/{{#\s?each/)
-        expect(temp).toMatch(/{{\/\s?each/)
-        expect(temp).toMatch(/{{\s?html_url\s?}}/)
-        expect(temp).toMatch(/{{\s?body\s?}}/)
-        expect(temp).toMatch(/{{\s?title\s?}}/)
-      })
-
-      it('renders the right template', () => {
-        const spy = expect.spyOn(window.Handlebars, "compile").andCallThrough()
-        showIssues()
-        expect(spy).toHaveBeenCalledWith(document.getElementById('issues-template').innerHTML)
-        spy.restore()
-      })
-    })
-
-    describe('showing results', () => {
-      it('has the right vals in template', () => {
-        const temp = document.getElementById('repo-template').innerHTML
-        expect(temp).toMatch(/{{\s?html_url\s?}}/)
-        expect(temp).toMatch(/{{\s?full_name\s?}}/)
-      })
-
-      it('renders the right template', () => {
-        const spy = expect.spyOn(window.Handlebars, "compile").andCallThrough()
-        showResults()
-        expect(spy).toHaveBeenCalledWith(document.getElementById('repo-template').innerHTML)
-        spy.restore()
-      })
-    })
-  })
 
   describe('fetch functions', () => {
     let fetchSpy
