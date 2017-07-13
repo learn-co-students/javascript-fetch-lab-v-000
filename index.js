@@ -2,6 +2,7 @@ function getIssues() {
     fetch('https://api.github.com/repos/:umohm1')
     .then(res => res.json())
     .then(json => console.log(json));
+}
 
 
 function showIssues(json) {
@@ -9,7 +10,7 @@ function showIssues(json) {
     const src = document.getElementById("issues-template").innerHTML
     const template = Handlebars.compile(src)
     const repoList = template(repos)
-    const repoLists = `<ul>${repos.map(r => '<li><a href="' + r.html_url + '">'  + r.body + r.title '</li>').join('')}</ul>`
+    const repoLists = `<ul>${repos.map(r => '<li><a href="' + r.html_url + '">'  + r.body + r.title + '</li>').join('')}</ul>`
     document.getElementById("issues").innerHTML = repoList
 }
 
@@ -21,14 +22,14 @@ function showResults(json) {
     const src = document.getElementById("repo-template").innerHTML
     const template = Handlebars.compile(src)
     const repoList = template(repos)
-    const repoLists = `<ul>${repos.map(r => '<li><a href="' + r.html_url + '">'  + r.full_name '</li>').join('')}</ul>`
+    const repoLists = `<ul>${repos.map(r => '<li><a href="' + r.html_url + '">'  + r.full_name + '</li>').join('')}</ul>`
     document.getElementById("issues").innerHTML = repoList
 }
 
 function forkRepo() {
   const repo = 'learn-co-curriculum/javascript-fetch-lab'
   fetch('https://github.com/learn-co-curriculum/javascript-fetch-lab'), {
-      
+
   }
 }
 
@@ -39,7 +40,7 @@ function showForkedRepo() {
 function getToken() {
   // change to your token to run in browser, but set
   // back to '' before committing so all tests pass
-  const token = 'c14e188ba7119af46fdfa8bbc67af10d48b8b962';
+  const token = '';
   fetch('https://api.github.com/repos/:umohm1', {
     headers: {
       Authorization: `token ${token}`
