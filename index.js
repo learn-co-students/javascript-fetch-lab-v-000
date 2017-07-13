@@ -40,7 +40,7 @@ function showForkedRepo() {
 function getToken() {
   // change to your token to run in browser, but set
   // back to '' before committing so all tests pass
-  const token = '';
+  const token = '02c259e66acbfbc709c469ed5800ae0e81992b37';
   fetch('https://api.github.com/repos/:umohm1', {
     headers: {
       Authorization: `token ${token}`
