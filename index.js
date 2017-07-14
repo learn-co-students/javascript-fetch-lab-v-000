@@ -53,15 +53,4 @@ function forkRepo() {
             Authorization: `token ${getToken}`
         }
     }).then(res => showResults(results));
-
-
-
-    // function getToken() {
-    //     // // change to your token to run in browser, but set
-    //     // // back to '' before committing so all tests pass
-    //     return '33a2303180a4e6ce89c00f7ac466f6fa2bb4ba22';
-    //
-    //     // return ''
-    // }
-
 }
