@@ -1,7 +1,7 @@
 function getIssues() {
   const repo = 'javascript-fetch-lab';
   const token = getToken();
-  fetch(`api.github.com/repos/squirrelnest/${repo}/issues`, {
+  fetch(`https://api.github.com/repos/learn-co-students/${repo}/issues`, {
     method: 'GET',
     headers: {
       Authorization: `token ${token}`
@@ -20,7 +20,7 @@ function createIssue() {
   const token = getToken();
   const postData = document.getElementById('body').value;
 
-  fetch(`api.github.com/repos/squirrelnest/${repo}/issues`, {
+  fetch(`https://api.github.com/repos/squirrelnest/${repo}/issues`, {
     method: 'POST',
     body: JSON.stringify(postData),
     headers: {
@@ -39,12 +39,13 @@ function forkRepo() {
   const repo = 'learn-co-curriculum/javascript-fetch-lab'
   //use fetch to fork it!
   const token = getToken();
-  fetch(`api.github.com/repos/${repo}`, {
+  fetch(`https://api.github.com/repos/${repo}`, {
     method: 'POST',
     headers: {
       Authorization: `token ${token}`
     }
   }).then(res => console.log(res));
+  showResults();
 }
 
 function getToken() {
