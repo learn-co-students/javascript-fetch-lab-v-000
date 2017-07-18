@@ -4,30 +4,6 @@ const baseApi = 'https://api.github.com/'
 const fork = `${userName}/javascript-fetch-lab`
 
 
-
-/*function Issue(attributes){
-  this.title = attributes.title;
-  this.body = attributes.body;
-  this.url = attributes.url;
-}
-
-
-function Repo(attributes){
-  	
-  this.url = attributes.url;
-  
-  this.html_url = attributes.html_url;
-
-
-  
-} 
-
-
-/*Issue.prototype.template = function(){
-   var template = `<li>Title: <a href="${this.url}">${this.title} </a><span> | Body: ${this.body}</span></li>`
-   return template;
-}; */
-
 Repo.prototype.template = function() {
 	var template = `<h3>Forked Successfully!</h3> 
 					<a href="${this.url}">${this.url} </a>`
@@ -38,13 +14,9 @@ function getIssues(data) {
 	fetch(`${baseApi}repos/${fork}/issues`).
 		then(resp => {
 			resp.json().then( data => {
-				//console.log("data", data)
-        
-					//showIssues(new Issue(data[i]));
-					//console.log("datanum", data) 
 					
 					showIssues(data); 
-					//console.log(data[i].body);
+				
 				
 			})
 		})
@@ -74,8 +46,6 @@ function createIssue() {
   }).then(resp => getIssues())
 }
 
-/*function showResults(json) {
-} */
 
 function forkRepo() {  
   const repo = 'learn-co-curriculum/javascript-fetch-lab'
