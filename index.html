@@ -16,6 +16,7 @@
         margin-right: 20px;
       }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
     <main id="main">
@@ -37,14 +38,28 @@
         <div id="issues"></div>
       </div>
     </div>
-    <script src="handlebars.js"></script>
+
     <script src="index.js"></script>
+    <script src="handlebars.js"></script>
+
     <script id="repo-template" type="text/x-handlebars-template">
       <h3>Forked Successfully!</h3>
-      <!--fill me in with templatey goodness-->
+        <p>html_url {{html_url}}</p>
+        <p>html_url {{full_name}}</p>
     </script>
+
     <script id="issues-template" type="text/x-handlebars-template">
-      <!--fill me in with templatey goodness-->
+      <h3>Issues Successfully!</h3>
+       {{#each this}}
+        <p>{{html_url}}</p>
+        <p>{{body}}</p>
+        <p>{{title}}</p>
+       {{/each}}
     </script>
+
+    <div id="green">
+      in green div
+    </div>
+
   </body>
 </html>
