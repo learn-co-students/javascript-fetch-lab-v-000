@@ -1,7 +1,7 @@
 const fork = 'howardbdev/javascript-fetch-lab'
 
 function getIssues() {
-  fetch(`https://api.github.com/repos/learn-co-curriculum/javascript-fetch-lab/issues`, {
+  fetch(`https://api.github.com/repos/howardbdev/javascript-fetch-lab/issues`, {
     method: 'GET',
     headers: {
       Authorization: `token ${getToken()}`
@@ -12,11 +12,11 @@ function getIssues() {
 function showIssues(json) {
   let template = Handlebars.compile(document.getElementById('issues-template').innerHTML);
   let issue = template(json);
-  document.getElementById('issues').append("<br>" + issue + "<br>");
+  document.getElementById('issues').innerHTML += "<br>" + issue + "<br>";
 }
 
 function createIssue() {
-  var postData = {title: document.getElementById('title').val(), body: document.getElementById('body').val()}
+  var postData = {title: document.getElementById('title').value, body: document.getElementById('body').value}
   debugger
   fetch(`https://api.github.com/repos/howardbdev/javascript-fetch-lab/issues`, {
     method: 'POST',
@@ -29,6 +29,8 @@ function createIssue() {
 }
 
 function showResults(json) {
+  var template = Handlebars.compile(document.getElementById("repo-template").innerHTML);
+  document.getElementById("results").innerHTML += template(json);
 }
 
 function Repo(attributes){
@@ -52,7 +54,6 @@ function forkRepo() {
       'Authorization': `token ${getToken()}`,
     }
   }).then(resp => resp.json())
-
     .then(resp => {
     let repo = new Repo(resp);
     showForkedRepo(repo);
