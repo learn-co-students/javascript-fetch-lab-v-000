@@ -15,7 +15,7 @@ function showIssues(json) {
 function createIssue() {
 	var title = document.getElementById("title").value;
 	var text = document.getElementById("body").value;
-	const issue = 'https://api.github.com/repos/@apalski/javascript-fetch-lab/issues';
+	const issue = 'https://api.github.com/repos/apalski/javascript-fetch-lab/issues';
 	fetch(issue, {
 		method: 'POST',
 		title: title,
