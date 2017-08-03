@@ -17,16 +17,20 @@
       }
     </style>
   </head>
+
   <body>
+
     <main id="main">
       <div id="errors"></div>
     </main>
+
     <div class="flexbox-container">
       <div>
         <h3>Create Fork</h3>
         <p><a href="#" onclick="forkRepo()">Fork Repository</a></p>
         <div id="results"></div>
       </div>
+
       <div>
         <h3>Issues</h3>
         <div>
@@ -37,14 +41,21 @@
         <div id="issues"></div>
       </div>
     </div>
+
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+
     <script id="repo-template" type="text/x-handlebars-template">
       <h3>Forked Successfully!</h3>
-      <!--fill me in with templatey goodness-->
+      <p><a href="{{html_url}}">{{full_name}}</a></p>
     </script>
+
     <script id="issues-template" type="text/x-handlebars-template">
-      <!--fill me in with templatey goodness-->
+      {{#each this}}
+        <h3><a href="{{html_url}}">{{title}}</a></h3>
+        <p>{{body}}</p>
+      {{/each}}
     </script>
+
   </body>
 </html>
