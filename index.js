@@ -11,10 +11,11 @@ function showResults(json) {
 }
 
 function forkRepo() {
-  const repo = 'learn-co-curriculum/javascript-fetch-lab'
+  const repo = 'https://api.github.com/repos/Mk-Etlinger/javascript-fetch-lab/forks'
   fetch(repo, {
+    method: 'POST',
     headers: {
-      Authorization: `token: ${getToken()}`
+      'Authorization': `token: ${getToken()}`
     }
   }).then(response => response.json()).then(json => console.log(json))
 }
