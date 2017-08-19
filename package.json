@@ -37,6 +37,7 @@
     "node-inspector": "^0.12.8"
   },
   "dependencies": {
+    "debug": "^3.0.0",
     "handlebars": "^4.0.5"
   }
 }
