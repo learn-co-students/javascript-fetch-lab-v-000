@@ -5,11 +5,7 @@
 //   }
 // }).then(res => res.json()).then(json => console.log(json));
 function getToken() {
- // change to your token to run in browser, but set
-  // ack to '' before committing so all tests pass
-    // var numb = '49803265df594159a008b20559794685f8c04a41';
-    // return numb;
-    return ''
+     return ''
 }
 
 function getIssues() {
