@@ -1,5 +1,3 @@
-const token = '3884d7e08aabdddf89ee4d709f7fc6bd37387ea2';
- 
 const userName = 'jffernan'
 const baseApi = 'https://api.github.com/'
 const fork = `${userName}/javascript-fetch-lab`
@@ -80,6 +78,6 @@ function showForkedRepo(repo) {
 }
 
 
-function getToken(token) {
-  
+function getToken() {
+  return ''
 }
