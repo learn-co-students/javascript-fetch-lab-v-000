@@ -28,6 +28,9 @@
       <div>
         <h3>Create Fork</h3>
         <p><a href="#" onclick="forkRepo()">Fork Repository</a></p>
+        <script id="repo-template" type="text/x-handlebars-template">
+          <h2><a href="{{html_url}}">{{full_name}}</a></h2>
+        </script>
         <div id="results"></div>
       </div>
       <div>
@@ -37,6 +40,12 @@
           Issue Text: <input type="text" id="body"><br>
           <a href="#" id="search" onclick="createIssue()">Create Issue</a>
         </div>
+        <script id="issues-template" type="text/x-handlebars-template">
+          {{#each this}}
+            <p><a href="{{url}}">{{title}}</a></h2>
+            <p>{{body}}</p>
+          {{/each}}
+        </script>
         <div id="issues"></div>
       </div>
     </div>
