@@ -60,7 +60,7 @@ describe('index', () => {
 
       createIssue()
       const url = fetchSpy.calls[0].arguments[0]
-      expect(url).toMatch(/javascript-fetch-lab\/issues/)
+      expect(url).toMatch(/javascript-fetch-lab-v-000\/issues/)
       expect(url).toNotMatch(/learn-co-curriculum/)
       const opts = fetchSpy.calls[0].arguments[1]
       expect(opts.method).toMatch(/post/)
@@ -71,7 +71,7 @@ describe('index', () => {
     it('fetches the get issues api', () => {
       getIssues()
       const url = fetchSpy.calls[0].arguments[0]
-      expect(url).toMatch(/javascript-fetch-lab\/issues/)
+      expect(url).toMatch(/javascript-fetch-lab-v-000\/issues/)
       expect(url).toNotMatch(/learn-co-curriculum/)
     })
   })
