@@ -40,6 +40,23 @@
         <div id="issues"></div>
       </div>
     </div>
+    <script src="handlebars.js"></script>
     <script src="index.js"></script>
+    <script id="repo-template" type="text/x-handlebars-template">
+      <h3>Forked Successfully!</h3>
+      <p><strong>{{full_name}}:</strong></p>
+      <a href="{{html_url}}" target="_blank">{{html_url}}</a>
+    </script>
+    <script id="issues-template" type="text/x-handlebars-template">
+    <ul>
+      {{#each this}}
+        <li>
+          <p>{{title}}</p>
+          <p>{{body}}</p>
+          <p><a href="{{html_url}}">{{url}}</a></p>
+        </li>
+      {{/each}}
+    </ul>
+    </script>
   </body>
 </html>
