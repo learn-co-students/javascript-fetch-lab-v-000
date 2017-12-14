@@ -1,4 +1,4 @@
-const token = '17726abac5af7f865391974e3e8702b40b5cdbf0'
+const token = ''
 
 function getIssues() {
   const repo = 'https:/api.github.com\/repos\/eltuttle\/javascript-fetch-lab\/issues'
