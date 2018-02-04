@@ -45,7 +45,7 @@
     </script>
     <script id="issues-template" type="text/x-handlebars-template">
       <ul>
-      {{#each this}}
+      {{#each issues}}
         <li>
           <h4><a href="{{ url }}">{{ title }}</a></h4>
           <p>{{ body }}</p>
@@ -53,5 +53,6 @@
       {{/each}}
       </ul>
     </script>
+
   </body>
 </html>
