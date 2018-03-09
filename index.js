@@ -1,22 +1,50 @@
+
+const token = ''
+
 function getIssues() {
+  const repo = 'https:/api.github.com\/repos\/fachastorm\/javascript-fetch-lab\/issues'
+  fetch(repo, {
+    headers: {
+      Authorization: `token ${token}`
+    }
+  }).then(res => console.log(res))
 }
 
 function showIssues(json) {
 }
 
 function createIssue() {
+  var title = document.getElementById('title').value
+  var body = document.getElementById('body').value
+  const postData = {
+    title: title,
+    body: body
+  };
+  const repo = 'https:/api.github.com\/repos\/fachastorm\/javascript-fetch-lab\/issues'
+  fetch(repo, {
+    method: 'post',
+    body: JSON.stringify(postData),
+    headers: {
+      Authorization: `token ${token}`
+    }
+  }).then(res => console.log(res))
 }
 
 function showResults(json) {
 }
 
 function forkRepo() {
-  const repo = 'learn-co-curriculum/javascript-fetch-lab'
-  //use fetch to fork it!
+  const repo = 'https:/api.github.com\/repos\/learn-co-curriculum\/javascript-fetch-lab/forks'
+  fetch(repo, {
+    method: 'post',
+    headers: {
+      Authorization: `token ${token}`
+    }
+  }).then(res => res.json()).then(json => console.log(json));
 }
 
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return ''
+  return '';
 }
